@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+  width: 100%;
+}
+.appContainer {
+  width: 1024px;
+  margin: 0 auto;
+}
+.optionsContainer {
+  width:30%;
+  float: left;
+}
+
+.optionsContainer > div > label {
+  display: inline-block;
+  width: 120px;
+  padding: 0px;
+  text-align: left;
+  font-size: 14px;
+  color: #303030;
+}
+
+.themeContainer {
+  float: left;
+}
