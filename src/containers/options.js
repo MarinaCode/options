@@ -22,6 +22,7 @@ class Options extends  Component {
         }
     }
 
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.createTheme(this.state);

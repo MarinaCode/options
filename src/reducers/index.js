@@ -5,4 +5,5 @@ const reducers = combineReducers({
     data: options
 })
 
+
 export default reducers;

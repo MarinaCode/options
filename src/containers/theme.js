@@ -10,7 +10,6 @@ class Theme extends   Component {
         super(props);
     }
     render() {
-
         var css = '';
         var data = this.props.data;
         var width = 50+'px';
