@@ -4,31 +4,33 @@
 
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { defaultOptions } from "../actions/index";
+
 
 class Theme extends   Component {
     constructor(props) {
         super(props);
+
+        this.defaultOptions = this.defaultOptions.bind(this);
+    }
+
+    defaultOptions() {
+        this.props.defaultOptions();
     }
     render() {
+
         var css = '';
         var data = this.props.data;
-        var width = 50+'px';
-        var height = 100+'px';
-        var bgcolor = '#3104B4';
-        var bdcolor = '#3104B4';
-        var radius = '10px';
 
-        if(data != null)  {
-            width = data.width + 'px';
-            height =  data.height + 'px';
-            bgcolor = data.bgcolor;
-            bdcolor = '1px solid ' + data.bdcolor;
-            radius = data.radius + 'px';
-
-        }
+        let width = data.width + 'px';
+        let height =  data.height + 'px';
+        let bgcolor = data.bgcolor;
+        let bdcolor = '5px solid ' + data.bdcolor;
+        let radius = data.radius + 'px';
 
         css =  `.container { width: ${width}; height:${height}; background-color: ${bgcolor}; border-radius: ${radius}; border: ${bdcolor}`;
-        console.log(this.props.data);
+
         return(
             <div className="themeContainer">
                 <style>{css}</style>
@@ -37,7 +39,7 @@ class Theme extends   Component {
                 <div>
                     <button>prev</button>
                     <button>next</button>
-                    <button>default</button>
+                    <button onClick={ this.defaultOptions }>default</button>
                 </div>
             </div>
         )
@@ -46,8 +48,12 @@ class Theme extends   Component {
 
 function mapStateToProps(state) {
     return {
-         data : state.data
+         data : state.data.data
     }
 }
 
-export  default connect(mapStateToProps)(Theme)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ defaultOptions }, dispatch);
+}
+
+export  default connect(mapStateToProps,mapDispatchToProps)(Theme)
